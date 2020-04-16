@@ -22,3 +22,4 @@ sudo python main.py
 ## Extras:
 * If you want the script to run on boot, checkout the systemd .service file
 * A log is created which details, bounce, date, time, and distance from sensor (in cm)
+* The script will check the log file and sum any previous bounces from earlier in the day. Anything not from the current day won't be counted. (duh).
