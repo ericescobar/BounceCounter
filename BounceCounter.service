@@ -1,0 +1,19 @@
+#Run the following to setup as a service
+#cp BounceCounter.service /etc/systemd/system/
+#sudo systemctl enable BounceCounter.service
+#sudo systemctl start BounceCounter.service
+
+[Unit]
+Description=Start Bouncer on Boot
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+WorkingDirectory=/home/pi/BounceCounter
+#Gotta run as root for GPIO!
+ExecStart=sudo python /home/pi/BounceCounter/main.py
+Restart=on-failure
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target

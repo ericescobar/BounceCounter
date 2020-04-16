@@ -3,12 +3,18 @@ from datetime import datetime
 import RPi.GPIO as GPIO
 import time
 import ultra_sonic
+import os
+import os, sys
+# This script must be run as root for GPIO to work!
+if not os.geteuid()==0:
+	print('must run as root for GPIO to work!')
+	exit()
 
 ultra_sonic.distance()
 def average_distance():
 	start = time.time()
 	dataset = []
-	while time.time()-start < 5:
+	while time.time()-start < 3:
 		dist = ultra_sonic.distance()
         	time.sleep(.025)
 		#print(dist)
@@ -46,23 +52,23 @@ def max_deflection():
 	five_percent_samples = int(num_samples / 10)
 	sorted_data = sorted(dataset)
 	lowest_10 = sorted_data[:five_percent_samples]
-	avg_max_deflection = sum(lowest_5)/len(lowest_5)
+	avg_max_deflection = sum(lowest_10)/len(lowest_10)
 	return avg_max_deflection 
 try:
 	print('Stand still on trampoline')
-	time.sleep(3)
-	avg_distance = average_distance()
-	print avg_distance
-	print('Starting Distance: ' + str(round(avg_distance,1)))
-	time.sleep(3)
-	print('Now jump 5 times')
-	time.sleep(3)
+#	time.sleep(3)
+#	avg_distance = average_distance()
+#	print avg_distance
+#	print('Starting Distance: ' + str(round(avg_distance,1)))
+#	time.sleep(3)
+#	print('Now jump 5 times')
+#	time.sleep(3)
 	deflection = max_deflection()
 	print('Distance deflected during jump: ' + str(deflection))
-        f = open('calibration_readings.txt','w')
-        f.write(str(avg_distance)+'\n'+str(deflection))
-        f.close()
-	print('Calibration data saved!')
+ #       f = open('calibration_readings.txt','w')
+#        f.write(str(avg_distance)+'\n'+str(deflection))
+#        f.close()
+#	print('Calibration data saved!')
 
 # Reset by pressing CTRL + C
 except KeyboardInterrupt:

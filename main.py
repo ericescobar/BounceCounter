@@ -6,6 +6,12 @@ import RPi.GPIO as GPIO
 import time
 import log_count
 import ultra_sonic
+
+# This script must be run as root for GPIO to work!
+if not os.geteuid()==0:
+        print('must run as root for GPIO to work!')
+        exit()
+
 constants = []
 try:
 	calibration_data = open('calibration_readings.txt', 'r') 

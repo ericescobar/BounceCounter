@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			function updateValue(){
+				var rawFile = new XMLHttpRequest();
+				rawFile.open("GET", "bounce.txt", false);
+				rawFile.send(null);
+				document.getElementById("value").innerHTML = rawFile.responseText;
+				setTimeout('updateValue()',100);
+			}
+		</script>
+	</head>
+	<center>	
+	<font size="100">
+	<br>
+	Bounce Counter
+	<br><br>
+	<body onLoad="updateValue()">
+		<p id="value">NO VALUE</p>	
+	<br>
+	<IMG SRC="giphy.gif">
+	</center>
+	</font>
+	</body>
+</html>
