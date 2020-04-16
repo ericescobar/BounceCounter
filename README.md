@@ -1,5 +1,7 @@
 # Trampoline Bounce Counter
 This project uses a Raspberry Pi and a ultrasonic distance sensor to count the number of bounces on a trampoline. The data is logged to a file for future stats pages, and the live bounce count is displayed on a simple web page.
+## Video:
+[See it in action](https://youtu.be/oUcTvNFyzaw)
 
 ## Setup:
 FYI - you have to run **calibrate.py** and **main.py** as sudo for the sensor to work.
