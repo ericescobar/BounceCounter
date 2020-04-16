@@ -23,3 +23,9 @@ sudo python main.py
 * If you want the script to run on boot, checkout the systemd .service file
 * A log is created which details, bounce, date, time, and distance from sensor (in cm)
 * The script will check the log file and sum any previous bounces from earlier in the day. Anything not from the current day won't be counted. (duh).
+
+## Credits:
+The following sites helped me get the sensor up and running.
+* [Wiring](https://thepihut.com/blogs/raspberry-pi-tutorials/hc-sr04-ultrasonic-range-sensor-on-the-raspberry-pi)
+* [Sensor Code](https://tutorials-raspberrypi.com/raspberry-pi-ultrasonic-sensor-hc-sr04/)
+* [Web Code](https://www.raspberrypi.org/forums/viewtopic.php?t=80957)
