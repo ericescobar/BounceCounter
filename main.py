@@ -6,6 +6,7 @@ import RPi.GPIO as GPIO
 import time
 import log_count
 import ultra_sonic
+import os
 
 # This script must be run as root for GPIO to work!
 if not os.geteuid()==0:
